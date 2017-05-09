@@ -777,10 +777,10 @@ We can see that there is a strong correlation between alcohol & density. As alco
 
 # Reflection
 
-For me, I had no experience in wines because I don't drink them. Also, I didn't expect that wines have massive characteristics. But when I started investigating the dataset, I learned a lot about wines world and how they get ranked and categorized. This is a very interesting topic because they have a huge fan. I took a longer time in the investigation to read about the chemicals and how they linked together, it was really fun.
+For me, I had no experience in wines because I don’t drink them. Also, I didn’t expect that wines have massive characteristics. But when I started investigating the dataset, I learned a lot about wines world and how they get ranked and categorized. This is a very interesting topic because they have a huge fan. I took a longer time in the investigation to read about the chemicals and how they linked together, it was really fun.
 
-After understanding the dataset, I started the analysis. It was my first experiment with R Language, so I faced some problems at the beginning. 
+After understanding the dataset, I started the analysis. It was my first experiment with R Language, so I faced some problems at the beginning.
 
 The dataset was really well organized, but I added two variables [Ranking and Category] to help me in my analysis. We can see that alcohol & density are the best indicators of the wine quality. This will help all people who drink red wine to take better decisions based on chemical details.
 
-For the feature, I am planning to get a bigger dataset to increase the sample size and get a better understanding of this area. Also, I think I am going to make a small mobile app, where you take a picture for your selection of wine, then the app will make some analysis about it.
+For the future, I am planning to get a bigger dataset to increase the sample size and get a better understanding of this area. Also, I think I am going to make a small mobile app, where you take a picture for your selection of wine, then the app will make some analysis about it.
