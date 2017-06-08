@@ -1,8 +1,14 @@
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+
+```
+
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
+
 Red Wine Quality by Hammad Al-Hammad
 ========================================================
 
@@ -42,7 +48,7 @@ Red Wine Quality by Hammad Al-Hammad
 
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 # Load all libraries 
 library('ggplot2')
@@ -59,7 +65,7 @@ library(gridExtra)
 #### Now, We are going to load data into the workspace.Then, we are going to print the internal structure of the dataset.
 
 
-```{r echo=FALSE, Load_the_Data}
+```{r echo=FALSE, Load_the_Data, message=FALSE, warning=FALSE}
 
 # Load the Data
 rw <- read.csv('wineQualityReds.csv')
@@ -72,7 +78,7 @@ str(rw)
 As listed above, the data contains 1599 obs. of  13 variables. The first variable (X) is useles in our analysis. So, we are going to delete it.
 
 
-```{r echo=FALSE, Remove_ID}
+```{r echo=FALSE, Remove_ID, message=FALSE, warning=FALSE}
 
 # Delete X from the dataset
 rw$X <- NULL
@@ -90,7 +96,7 @@ rw$X <- NULL
 *So, We are going to add new column to categorize the wine type if it's Light, Medium or Strong.*
 
 
-```{r echo=FALSE, Add_Category}
+```{r echo=FALSE, Add_Category, message=FALSE, warning=FALSE}
 
 # Add Category to the dataset
 rw$category <- ''
@@ -104,7 +110,7 @@ rw$category <- as.factor(rw$category)
 
 #### Let's see how many one of our sample in each category.
 
-```{r echo=FALSE, Disiplay_Category_Table}
+```{r echo=FALSE, Disiplay_Category_Table, message=FALSE, warning=FALSE}
 
 # Display a table which shows types of categories and their total
 table(rw$category)
@@ -115,7 +121,7 @@ table(rw$category)
 As we see, Light = 37, Medium = 1421 and Strong = 141
 
 
-```{r echo=FALSE, Disiplay_QPlot_Category}
+```{r echo=FALSE, Disiplay_QPlot_Category, message=FALSE, warning=FALSE}
 
 # Display a visualization which shows types of categories and their total
 qplot(x=category, data=rw)
@@ -133,7 +139,7 @@ qplot(x=category, data=rw)
 *So, We are going to add new column to rank the wine type if it's Poor, Good or Excellent*
 
 
-```{r echo=FALSE, Add_Ranking}
+```{r echo=FALSE, Add_Ranking, message=FALSE, warning=FALSE}
 
 # Add Ranking to the dataset
 rw$ranking[5>=rw$quality] <- 'Poor'
@@ -147,7 +153,7 @@ rw$ranking <- as.factor(rw$ranking)
 #### Let's see how many one of our sample in each ranking
 
 
-```{r echo=FALSE, Disiplay_Ranking_Table}
+```{r echo=FALSE, Disiplay_Ranking_Table, message=FALSE, warning=FALSE}
 
 # Display a table which shows types of ranking and their total
 table(rw$ranking)
@@ -158,7 +164,7 @@ table(rw$ranking)
 As we see, Excellent = 18, Good = 837 and Poor = 744
 
 
-```{r echo=FALSE, Disiplay_QPlot_Ranking}
+```{r echo=FALSE, Disiplay_QPlot_Ranking, message=FALSE, warning=FALSE}
 
 # Display a visualization which shows types of ranking and their total
 qplot(x=ranking, data=rw)
@@ -172,7 +178,7 @@ qplot(x=ranking, data=rw)
 > **Tip**: Here, we are going to perform some preliminary exploration of Red Wines dataset. 
 
 
-```{r echo=FALSE, Print_Summary_Of_RW}
+```{r echo=FALSE, Print_Summary_Of_RW, message=FALSE, warning=FALSE}
 
 # Print a summary about the data [Each Variable]
 summary(rw)
@@ -182,7 +188,7 @@ summary(rw)
 The result above is listing basic statistics about each variable.
 
 
-```{r echo=FALSE, Make_Plot_Function}
+```{r echo=FALSE, Make_Plot_Function, message=FALSE, warning=FALSE}
 
 # This is a basic function, which takes a variable and histogram's bandwidth.
 # Then return ggplot diagram.
@@ -197,7 +203,7 @@ make_plot <- function(variable, binwidth) {
 
 #### Here is a histogram about the fixed.acidity variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_fixed.acidity}
+```{r echo=FALSE, Make_Plot_Function_For_fixed.acidity, message=FALSE, warning=FALSE}
 
 make_plot('fixed.acidity', 0.3) 
 
@@ -208,7 +214,7 @@ The fixed.acidity is skewed to the right.
 
 #### Here is a summary about the fixed.acidity variable.
 
-```{r echo=FALSE, Disply_Summary_For_fixed.acidity}
+```{r echo=FALSE, Disply_Summary_For_fixed.acidity, message=FALSE, warning=FALSE}
 
 summary(rw$fixed.acidity)
 
@@ -219,7 +225,7 @@ The above table shows a summary of the fixed.acidity variable.
 
 #### Here is a histogram about the citric.acid variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_citric.acid}
+```{r echo=FALSE, Make_Plot_Function_For_citric.acid, message=FALSE, warning=FALSE}
 
 make_plot('citric.acid', 0.05) 
 
@@ -230,7 +236,7 @@ The citric.acid also is skewed to the right.
 
 #### Here is a summary about the citric.acid variable.
 
-```{r echo=FALSE, Disply_Summary_For_citric.acid}
+```{r echo=FALSE, Disply_Summary_For_citric.acid, message=FALSE, warning=FALSE}
 
 summary(rw$citric.acid)
 
@@ -241,7 +247,7 @@ The above table shows a summary of the citric.acid variable.
 
 #### Here is a histogram about the pH variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_pH}
+```{r echo=FALSE, Make_Plot_Function_For_pH, message=FALSE, warning=FALSE}
 
 make_plot('pH', 0.05) 
 
@@ -252,7 +258,7 @@ The pH is normally distributed.
 
 #### Here is a summary about the pH variable.
 
-```{r echo=FALSE, Disply_Summary_For_pH}
+```{r echo=FALSE, Disply_Summary_For_pH, message=FALSE, warning=FALSE}
 
 summary(rw$pH)
 
@@ -263,7 +269,7 @@ The above table shows a summary of the pH variable.
 
 #### Here is a histogram about the chlorides variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_chlorides}
+```{r echo=FALSE, Make_Plot_Function_For_chlorides, message=FALSE, warning=FALSE}
 
 make_plot('chlorides', 0.01) 
 
@@ -271,7 +277,7 @@ make_plot('chlorides', 0.01)
 
 The chlorides is skewed to the right. *We are going to apply the 10th log to it.*
 
-```{r echo=FALSE, Make_Plot_Function_For_chlorides_log10}
+```{r echo=FALSE, Make_Plot_Function_For_chlorides_log10, message=FALSE, warning=FALSE}
 
 qplot(x=chlorides, data=rw)+
   scale_x_log10()
@@ -283,7 +289,7 @@ The distribution of chlorides is normally distributed.
 
 #### Here is a summary about the chlorides variable.
 
-```{r echo=FALSE, Disply_Summary_For_chlorides}
+```{r echo=FALSE, Disply_Summary_For_chlorides, message=FALSE, warning=FALSE}
 
 summary(rw$chlorides)
 
@@ -293,7 +299,7 @@ The above table shows a summary of the chlorides variable.
 
 #### Here is a histogram about the residual.sugar variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_residual.sugar}
+```{r echo=FALSE, Make_Plot_Function_For_residual.sugar, message=FALSE, warning=FALSE}
 
 make_plot('residual.sugar', 0.05) 
 
@@ -301,7 +307,7 @@ make_plot('residual.sugar', 0.05)
 
 The residual.sugar is skewed to the right. *We are going to apply the 10th log to it.*
 
-```{r echo=FALSE, Make_Plot_Function_For_residual.sugar_log10}
+```{r echo=FALSE, Make_Plot_Function_For_residual.sugar_log10, message=FALSE, warning=FALSE}
 
 qplot(x=residual.sugar, data=rw)+
   scale_x_log10()
@@ -314,7 +320,7 @@ The distribution of residual.sugar is normally distributed.
 
 #### Here is a summary about the residual.sugar variable.
 
-```{r echo=FALSE, Disply_Summary_For_residual_sugar}
+```{r echo=FALSE, Disply_Summary_For_residual_sugar, message=FALSE, warning=FALSE}
 
 summary(rw$residual.sugar)
 
@@ -325,7 +331,7 @@ The above table shows a summary of the residual.sugar variable.
 
 #### Here is a histogram about the density variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_density}
+```{r echo=FALSE, Make_Plot_Function_For_density, message=FALSE, warning=FALSE}
 
 make_plot('density', 0.001) 
 
@@ -336,7 +342,7 @@ The density is normally distributed.
 
 #### Here is a summary about the density variable.
 
-```{r echo=FALSE, Disply_Summary_For_residual.sugar}
+```{r echo=FALSE, Disply_Summary_For_residual.sugar, message=FALSE, warning=FALSE}
 
 summary(rw$density)
 
@@ -346,7 +352,7 @@ The above table shows a summary of the density variable.
 
 #### Here is a histogram and box plot about the alcohol variable.
 
-```{r echo=FALSE, Make_Plot_For_alcohol}
+```{r echo=FALSE, Make_Plot_For_alcohol, message=FALSE, warning=FALSE}
 
 # alchol plot
 alchol_plot <- make_plot('alcohol', 1)
@@ -360,7 +366,7 @@ We can see that most of alcohol exists from 9 to 11.
 
 #### Here is a summary about the alcohol variable.
 
-```{r echo=FALSE, Disply_Summary_For_alcohol}
+```{r echo=FALSE, Disply_Summary_For_alcohol, message=FALSE, warning=FALSE}
 
 summary(rw$alcohol)
 
@@ -371,7 +377,7 @@ The above table shows a summary of the alcohol variable.
 
 #### Here is a histogram about the free.sulfur.dioxide variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_free.sulfur.dioxide}
+```{r echo=FALSE, Make_Plot_Function_For_free.sulfur.dioxide, message=FALSE, warning=FALSE}
 
 make_plot('free.sulfur.dioxide', 2) 
 
@@ -380,7 +386,7 @@ make_plot('free.sulfur.dioxide', 2)
 The free.sulfur.dioxide is skewed to the right. *We are going to apply the 10th log to it.*
 
 
-```{r echo=FALSE, Make_Plot_Function_For_free.sulfur.dioxide_log10}
+```{r echo=FALSE, Make_Plot_Function_For_free.sulfur.dioxide_log10, message=FALSE, warning=FALSE}
 
 qplot(x=free.sulfur.dioxide, data=rw)+
   scale_x_log10()
@@ -393,7 +399,7 @@ The distribution of free.sulfur.dioxide isn't normally distributed. It seems to 
 
 #### Here is a summary about the free.sulfur.dioxide variable.
 
-```{r echo=FALSE, Disply_Summary_For_free.sulfur.dioxide}
+```{r echo=FALSE, Disply_Summary_For_free.sulfur.dioxide, message=FALSE, warning=FALSE}
 
 summary(rw$free.sulfur.dioxide)
 
@@ -404,7 +410,7 @@ The above table shows a summary of the free.sulfur.dioxide variable.
 
 #### Here is a histogram about the total.sulfur.dioxide variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_total.sulfur.dioxide}
+```{r echo=FALSE, Make_Plot_Function_For_total.sulfur.dioxide, message=FALSE, warning=FALSE}
 
 make_plot('total.sulfur.dioxide', 2) 
 
@@ -413,7 +419,7 @@ make_plot('total.sulfur.dioxide', 2)
 The total.sulfur.dioxide is skewed to the right. *We are going to apply the 10th log to it.*
 
 
-```{r echo=FALSE, Make_Plot_Function_For_total.sulfur.dioxide_log10}
+```{r echo=FALSE, Make_Plot_Function_For_total.sulfur.dioxide_log10, message=FALSE, warning=FALSE}
 
 qplot(x=total.sulfur.dioxide, data=rw)+
   scale_x_log10()
@@ -425,7 +431,7 @@ The distribution of total.sulfur.dioxide is normally distributed.
 
 #### Here is a summary about the total.sulfur.dioxide variable.
 
-```{r echo=FALSE, Disply_Summary_For_total.sulfur.dioxide}
+```{r echo=FALSE, Disply_Summary_For_total.sulfur.dioxide, message=FALSE, warning=FALSE}
 
 summary(rw$total.sulfur.dioxide)
 
@@ -436,7 +442,7 @@ The above table shows a summary of the total.sulfur.dioxide variable.
 
 #### Here is a histogram about the volatile.acidity variable.
 
-```{r echo=FALSE, Make_Plot_Function_For_volatile.acidity}
+```{r echo=FALSE, Make_Plot_Function_For_volatile.acidity, message=FALSE, warning=FALSE}
 
 make_plot('volatile.acidity', 0.1) 
 
@@ -447,7 +453,7 @@ The volatile.acidity is normally distributed.
 
 #### Here is a summary about the volatile.acidity variable.
 
-```{r echo=FALSE, Disply_Summary_For_volatile.acidity}
+```{r echo=FALSE, Disply_Summary_For_volatile.acidity, message=FALSE, warning=FALSE}
 
 summary(rw$volatile.acidity)
 
@@ -466,7 +472,7 @@ The above table shows a summary of the volatile.acidity variable.
 
 Red Wine dataset contains 1599 records. Also, it has 14 variables. And this is the structure
 
-```{r echo=FALSE, Disply_Names_Of_Variables}
+```{r echo=FALSE, Disply_Names_Of_Variables, message=FALSE, warning=FALSE}
 
 names(rw)
 
@@ -497,7 +503,7 @@ Some variabels like [residual.sugar & alcohol] are skewed to the right. So, I ma
 
 We are going to group our sample based on the quality of it. We will have the mean volatile.acidity and median volatile.acidity also the number of occurence.
 
-```{r echo=FALSE, Bivariate_Group_By_Quality}
+```{r echo=FALSE, Bivariate_Group_By_Quality, message=FALSE, warning=FALSE}
 
 # Group by quality, and calculate the mean of volatile.acidity & median of volatile.acidity. 
 # Then calculate number of them.
@@ -516,13 +522,13 @@ rw.quality
 
 And here is a summary about the new variable rw.quality
 
-```{r echo=FALSE, Summary_Of_rw.quality}
+```{r echo=FALSE, Summary_Of_rw.quality, message=FALSE, warning=FALSE}
 
 summary(rw.quality)
 
 ```
 
-```{r echo=FALSE, Quality_Vs_Volatile.Acidity}
+```{r echo=FALSE, Quality_Vs_Volatile.Acidity, message=FALSE, warning=FALSE}
 
 grid.arrange(ggplot(aes(x=factor(quality), y=volatile.acidity), data=rw) +
   geom_jitter(alpha=0.5) +
@@ -540,7 +546,7 @@ grid.arrange(ggplot(aes(x=factor(quality), y=volatile.acidity), data=rw) +
 
 Our dataset contains some outlier, so we used median. We can see that as the quality increses, the volatile acidity decreases.
 
-```{r echo=FALSE, Correlation_Table}
+```{r echo=FALSE, Correlation_Table, message=FALSE, warning=FALSE}
 
 # Print a correlation tabel. 
 round(cor(subset(rw, select = -c(ranking, category))), 3)
@@ -549,7 +555,7 @@ round(cor(subset(rw, select = -c(ranking, category))), 3)
 
 We can see that there is a highe correlation between alcohol and quality. 
 
-```{r echo=FALSE, Correlations_Diagram}
+```{r echo=FALSE, Correlations_Diagram, message=FALSE, warning=FALSE}
 
 red_wine_sample <- subset(rw, select = -c(total.sulfur.dioxide, residual.sugar, free.sulfur.dioxide, sulphates, fixed.acidity, category, ranking))
 
@@ -568,18 +574,18 @@ The above visualization shows a strong correlation between quality & alcohol. Al
 
 *Now, we will check relation between pH and alcohol.*
 
-```{r echo=FALSE, Correlation_Diagram}
+```{r echo=FALSE, Correlation_Diagram, message=FALSE, warning=FALSE}
 
 # Draw a geom point to the relation between pH and alcohol.
 ggplot(data=rw, aes(x=pH, y=alcohol)) +
-  geom_point() +
+  geom_point(alpha=0.3, size=2) +
   geom_smooth()
 
 ```
 
 *The above visualization shows low correlation, so we are going to check it with correlation test*
 
-```{r echo=FALSE, Correlation_Test_phAndAlcohol}
+```{r echo=FALSE, Correlation_Test_phAndAlcohol, message=FALSE, warning=FALSE}
 
 # Test correlation between pH and alcohol
 cor.test(rw$pH, rw$alcohol)
@@ -588,7 +594,7 @@ cor.test(rw$pH, rw$alcohol)
 
 As expected, now much correlation between them.
 
-```{r echo=FALSE, density_And_alcohol}
+```{r echo=FALSE, density_And_alcohol, message=FALSE, warning=FALSE}
 
 # Draw a geom point to the relation between density and alcohol.
 ggplot(data=rw, aes(x=density, y=alcohol)) +
@@ -599,7 +605,7 @@ ggplot(data=rw, aes(x=density, y=alcohol)) +
 
 *The above visualization shows some correlation, so we are going to check it with correlation test*
 
-```{r echo=FALSE, Correlation_Test_densityAndAlcohol}
+```{r echo=FALSE, Correlation_Test_densityAndAlcohol, message=FALSE, warning=FALSE}
 
 # Test correlation between density and alcohol
 cor.test(rw$density, rw$alcohol)
@@ -608,7 +614,7 @@ cor.test(rw$density, rw$alcohol)
 
 We can see that there is a negtive correlation between [density, alcohol].
 
-```{r echo=FALSE, chlorides_And_alcohol}
+```{r echo=FALSE, chlorides_And_alcohol, message=FALSE, warning=FALSE}
 
 # Draw the relation between chlorides and alcohol.
 ggplot(data=rw, aes(x=chlorides, y=alcohol))+
@@ -621,7 +627,7 @@ ggplot(data=rw, aes(x=chlorides, y=alcohol))+
 
 *The above visualization shows outlaier, so we are going to check it with correlation test*
 
-```{r echo=FALSE, Correlation_Test_chloridesAndAlcohol}
+```{r echo=FALSE, Correlation_Test_chloridesAndAlcohol, message=FALSE, warning=FALSE}
 
 # Test correlation between chlorides and alcohol
 cor.test(rw$chlorides, rw$alcohol)
@@ -662,22 +668,30 @@ create here are justified by the plots you explored in the previous section. If
 you plan on creating any mathematical models, this is the section where you
 will do that.
 
-```{r echo=FALSE, Multivariate_Plots}
+```{r echo=FALSE, Multivariate_Plots, message=FALSE, warning=FALSE}
 
 # Plot about density vs alcohol and coloring rankings 
 ggplot(data=rw, aes(x=density, y=alcohol, color=ranking)) +
-  geom_point() +
-  geom_smooth(method='lm', se=FALSE)
+  geom_point(alpha = 0.8, size = 2) +
+  geom_smooth(method='lm', se=FALSE) +
+  scale_color_brewer(type='seq',
+                   guide=guide_legend(title='Ranking')) +
+  theme_dark()
+
 
 ```
 
 
-```{r echo=FALSE, Multivariate_Plots_pH&Alcohol}
+```{r echo=FALSE, Multivariate_Plots_pH&Alcohol, message=FALSE, warning=FALSE}
 
 # Plot about pH vs alcohol and coloring rankings 
 ggplot(data=rw, aes(x=pH, y=alcohol ,color=ranking)) +
-  geom_point() +
-  geom_smooth(method='lm', se=FALSE)
+  geom_point(alpha = 0.4, size = 2) +
+  geom_smooth(method='lm', se=FALSE) + 
+  scale_color_brewer(type='seq',
+                   guide=guide_legend(title='Ranking')) +
+  theme_dark()
+
 
 ```
 
@@ -703,58 +717,70 @@ Ranking with other variables.
 
 ### Plot One
 
-```{r echo=FALSE, Plot_One}
+```{r echo=FALSE, Plot_One, message=FALSE, warning=FALSE}
 
 ggplot(data=rw, aes(x=as.factor(quality), fill=ranking)) +
   geom_bar(aes(y=100*..count../sum(..count..))) +
   xlab("Wine Quality") +
-  ylab('Percentage') +
-  scale_fill_discrete(name="Alcohol Ranking") +
+  ylab('Percentage [%]') +
+  scale_fill_discrete(name="Quality Ranking") +
   ggtitle('Wine Quality')
 
 ```
 
 ### Description One
 
-We can see that most of the sample quality are between [5, 6].
+visualization shows that most of the sample quality are between [5, 6]. Excellent wines are with higher quality, more than 7. And poor are lower than 6. So, to select better wine, try to find one with quality >= 7.
 
 ### Plot Two
-```{r echo=FALSE, Plot_Two}
+```{r echo=FALSE, Plot_Two, message=FALSE, warning=FALSE}
 
 ggplot(data=rw, aes(x=pH, y=density, color=ranking)) +
   geom_point(position='jitter', alpha=0.5) +
   geom_smooth(method='lm', se=FALSE) +
-  ylab('Density') + 
+  scale_color_brewer(type='seq',
+     guide=guide_legend(title='Ranking')) +
+  ylab('Density [g / cm^3]') + 
   xlab('pH') +
-  ggtitle('Density and pH for all Ranking') 
+  ggtitle('Density and pH for all Ranking') +
+  theme_dark()
   
 
 ```
 
 ### Description Two
 
-We can see that as the density increses, the pH decreses. Which meaen there is a negtive correlation. 
+The above visualization shows that as the density increases, the pH decreases. Which means there is a negative correlation. Excellent red wines have pH between [3.0, 3.5] and the density lower than 1.0.
 
 ### Plot Three
 
-```{r echo=FALSE, Plot_Three}
+```{r echo=FALSE, Plot_Three, message=FALSE, warning=FALSE}
 
 ggplot(data=rw, aes(x=alcohol, y=density, color=ranking)) +
   geom_point(alpha=0.3, size=0.2) +
   geom_jitter(alpha=0.5) +
+  scale_color_brewer(type='seq',
+           guide=guide_legend(title='Ranking')) +
   geom_smooth(method='lm', se=FALSE) +
-  xlab('Alcohol') + 
-  ylab('Density') +
-  ggtitle('Density VS Alcohol for Rankings')
+  xlab('Alcohol [%]') + 
+  ylab('Density [g / cm^3]') + 
+  ggtitle('Density [g / cm^3] VS Alcohol [%] for Rankings') +
+  theme_dark()
 
 ```
 
 ### Description Three
 
-A strong correlation, as alcohol increase, density decrease. 
+We can see that there is a strong correlation between alcohol & density. As alcohol increase, density decrease. This means better wines are with high alcohol and low Density. And poor wines are with high density and low alcohol.
 
 ------
 
 # Reflection
 
-We can see that alcohol & density are the best indicators for the wine quality. This will help all people who drinks red wine to take better decisions based on chemical details.
+For me, I had no experience in wines because I don’t drink them. Also, I didn’t expect that wines have massive characteristics. But when I started investigating the dataset, I learned a lot about wines world and how they get ranked and categorized. This is a very interesting topic because they have a huge fan. I took a longer time in the investigation to read about the chemicals and how they linked together, it was really fun.
+
+After understanding the dataset, I started the analysis. It was my first experiment with R Language, so I faced some problems at the beginning.
+
+The dataset was really well organized, but I added two variables [Ranking and Category] to help me in my analysis. We can see that alcohol & density are the best indicators of the wine quality. This will help all people who drink red wine to take better decisions based on chemical details.
+
+For the future, I am planning to get a bigger dataset to increase the sample size and get a better understanding of this area. Also, I think I am going to make a small mobile app, where you take a picture for your selection of wine, then the app will make some analysis about it.
