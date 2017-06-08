@@ -12,7 +12,24 @@ Notes:
 Notes:
 
 ```{r Scatterplots}
+library(ggplot2)
+pf <- read.csv('pseudo_facebook.tsv', sep = '\t')
 
+install.packages("dplyr")
+library(dplyr)
+
+age_groupes <- group_by(pf, age)
+pf.fc_by_age <- summarise(age_groupes,
+                          friend_count_mean = mean(friend_count),
+                          friend_count_median = median(friend_count),
+                          n = n()
+)
+
+pf.fc_by_age <- arrange(pf.fc_by_age, age)
+head(pf.fc_by_age)
+
+ggplot(aes(age, friend_count_mean), data = pf.fc_by_age) +
+  geom_line()
 ```
 
 ***
@@ -26,7 +43,10 @@ Response:
 Notes:
 
 ```{r ggplot Syntax}
-
+pf
+ggplot(aes(x = www_likes_received, y = likes_received), data = pf) +
+  geom_point()
+  
 ```
 
 ***
