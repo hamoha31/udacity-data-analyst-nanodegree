@@ -241,12 +241,3 @@ test_classifier(clf, my_dataset, features_list)
 # generates the necessary .pkl files for validating your results.
 dump_classifier_and_data(clf, my_dataset, features_list)
 print 'Required information is saved.'
-
-# References
-print 'References Used:'
-print 'http://scikit-learn.org/stable/auto_examples/covariance/plot_outlier_detection.html \n' \
-		'http://scikit-learn.org/stable/auto_examples/applications/plot_outlier_detection_housing.html\n' \
-		'https://civisanalytics.com/blog/data-science/2016/01/06/workflows-python-using-pipeline-gridsearchcv-for-compact-code/ \n' \
-        'http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html \n' \
-        'http://scikit-learn.org/stable/modules/pipeline.html \n' \
-        'http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB \n' \
